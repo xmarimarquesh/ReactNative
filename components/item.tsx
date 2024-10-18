@@ -1,8 +1,10 @@
 import { View, StyleSheet, Text } from "react-native";
+import { Image } from "expo-image";
 
-export const Item = ({name, age, date}: {name: string, age: string, date: string}) => {
+export const Item = ({name, age, date, image}: {name: string, age: string, date: string, image: string }) => {
     return(
         <View style={styles.item}>
+            <Image style={styles.img} source={image} />
             <Text style={styles.texto}>{name}</Text>
             <Text style={styles.texto}>{age}</Text>
             <Text style={styles.texto}>{date}</Text>
@@ -25,4 +27,8 @@ const styles = StyleSheet.create({
       fontSize: 20,
       color: "#ffffff"
     },
+    img: {
+      width: 30,
+      height: 30
+    }
 });

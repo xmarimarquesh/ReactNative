@@ -3,54 +3,63 @@
       "id": "1",
       "nome": "Mariana",
       "idade": "18",
-      "data": "28/05/2006"
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
       "id": "2",
       "nome": "Helena",
       "idade": "18",
-      "data": "28/05/2006"
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
       "id": "3",
       "nome": "Juricanda",
       "idade": "21",
-      "data": "28/05/2006"
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
       "id": "4",
       "nome": "Mariana",
       "idade": "18",
-      "data": "28/05/2006"
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
       "id": "5",
       "nome": "Helena",
       "idade": "18",
-      "data": "28/05/2006"
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
       "id": "6",
       "nome": "Juricanda",
       "idade": "21",
-      "data": "28/05/2006"
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
-        "id": "7",
-        "nome": "Mariana",
-        "idade": "18",
-        "data": "28/05/2006"
+      "id": "7",
+      "nome": "Mariana",
+      "idade": "18",
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
-        "id": "8",
-        "nome": "Helena",
-        "idade": "18",
-        "data": "28/05/2006"
+      "id": "8",
+      "nome": "Helena",
+      "idade": "18",
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     },
     {
-        "id": "9",
-        "nome": "Juricanda",
-        "idade": "21",
-        "data": "28/05/2006"
+      "id": "9",
+      "nome": "Juricanda",
+      "idade": "21",
+      "data": "28/05/2006",
+      "imagem": "../assets/images/react-logo.png"
     }
 ]

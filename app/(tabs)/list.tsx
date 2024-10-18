@@ -3,14 +3,13 @@ import data from "@/constants/data.json";
 import { Item } from "@/components/item";
   
 export default function List(){
-
     return(
         <>
         <Text style={styles.titulo}> Lista </Text>
         <SafeAreaView style={styles.container}>
             <FlatList
                 data={data}
-                renderItem={({item}) => <Item name={item.nome} age={item.idade} date={item.data} />}
+                renderItem={({item}) => <Item name={item.nome} age={item.idade} date={item.data} image={item.imagem} />}
                 keyExtractor={item => item.id}
             />
         </SafeAreaView>

@@ -5,7 +5,7 @@ import { StyleSheet, Text} from 'react-native';
 export default function TabTwoScreen() {
   return (
     <>
-      <Text>Explore</Text>
+      <Text>PAGINA PARA ESTUO DOS COMPONNTES RACT NATIVE</Text>
     </>
   );
 }
