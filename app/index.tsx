@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { View, Text, SafeAreaView, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, SafeAreaView, TextInput, StyleSheet, TouchableOpacity} from "react-native";
 import { Link, router } from "expo-router";
+import { Image } from "expo-image";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function Login(){
     const [email, setEmail] = useState('');
@@ -18,31 +20,43 @@ export default function Login(){
 
     return(
         <>
-            <SafeAreaView>
-                <Text>Login</Text>
-                <Text>E-mail</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setEmail}
-                    value={email}
-                    placeholder="Digite seu e-mail"
-                    keyboardType="email-address"
-                    />
-                <Text>Senha</Text>
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setPass}
-                    value={pass}
-                    placeholder="Digite sua senha"
-                    keyboardType="numeric"
-                    secureTextEntry={true}
-                />
-                <Text>Count: {count}</Text>
-                <TouchableOpacity style={styles.button} onPress={onPress}>
-                    <Text>Logar</Text>
-                </TouchableOpacity>
-                <View>
-                    <Link href={"/register"} >Cadastre-se</Link>
+            <SafeAreaView style={styles.divizona}>
+                <LinearGradient style={styles.div} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
+                    <Image style={styles.logo} source="../assets/images/m.png"></Image>
+                    <View style={styles.textinho}>
+                        <Text style={styles.texto_login}>Login</Text>
+                    </View>
+                </LinearGradient>
+                <View style={styles.div_principal}>
+                    <View style={styles.inputs}>
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setEmail}
+                            value={email}
+                            placeholder="E-mail"
+                            keyboardType="email-address"
+                            />
+                        <TextInput
+                            style={styles.input}
+                            onChangeText={setPass}
+                            value={pass}
+                            placeholder="Password"
+                            keyboardType="numeric"
+                            secureTextEntry={true}
+                        />
+                        <View style={styles.esqueceu}>
+                            <Text>Forgot your password?</Text>
+                        </View>
+                    </View>
+                    {/* <Text>Count: {count}</Text> */}
+                    <TouchableOpacity style={styles.buttonn} onPress={onPress}>
+                        <LinearGradient style={styles.button} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
+                            <Text style={styles.button_text}>Logar</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                    <View>
+                        <Link href={"/register"} >cadastre-se</Link>
+                    </View>
                 </View>
             </SafeAreaView>
         </>
@@ -50,15 +64,78 @@ export default function Login(){
 }
 
 const styles = StyleSheet.create({
+    divizona: {
+        // flex: 1,
+        height: "100%"
+    },
+    div_principal: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-around",
+        height: "70%"
+    },
+    esqueceu: {
+        width: "70%",
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end'
+    },
+    inputs: {
+        width: "70%"
+    },
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 1,
+        borderWidth: 0,
         padding: 10,
+        borderRadius: 20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 4,
     },
-        button: {
+    buttonn:{
+        padding: 10,
+        margin: 12,
+        width: "70%",
+        height: 40
+    },
+    button: {
+        height: 40,
+        borderRadius: 20,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#DDDDDD',
-        padding: 10,
+        display: 'flex',
+        width: "100%",
     },
+    button_text: {
+        color: "#ffffff"
+    },
+    logo: {
+        width: 90,
+        height: 90
+    },
+    div: {
+        flex: 1,
+        borderBottomStartRadius: 75,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end'
+    },
+    texto_login: {
+        color: '#ffffff',
+        fontSize: 24,
+        fontFamily: 'roboto',
+        margin: 5
+    },
+    textinho: {
+        display: 'flex',
+        width: '100%',
+        alignItems: 'flex-end',
+        padding: 20,
+    }
   });
