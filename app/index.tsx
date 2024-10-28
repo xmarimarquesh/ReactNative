@@ -3,16 +3,26 @@ import { View, Text, SafeAreaView, TextInput, StyleSheet, TouchableOpacity} from
 import { Link, router } from "expo-router";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { FIREBASE_AUTH } from "@/firebaseConfig";
 
 export default function Login(){
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
 
-    const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
     // const onPress = () => setCount(prevCount => prevCount + 1);
 
-    const onPress = () => {
-        router.push("/(tabs)")
+    const auth = FIREBASE_AUTH;
+
+    const signIn = () => {
+        signInWithEmailAndPassword(auth, email, pass)
+        .then((dadosUsuario) => {
+            console.log(dadosUsuario);
+            router.push('/(tabs)')
+        }).catch((err) => {
+            alert(err.message);
+        })
     }
 
     console.log(email, pass)
@@ -49,13 +59,13 @@ export default function Login(){
                         </View>
                     </View>
                     {/* <Text>Count: {count}</Text> */}
-                    <TouchableOpacity style={styles.buttonn} onPress={onPress}>
+                    <TouchableOpacity style={styles.buttonn} onPress={signIn}>
                         <LinearGradient style={styles.button} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
-                            <Text style={styles.button_text}>Logar</Text>
+                            <Text style={styles.button_text}>Submit</Text>
                         </LinearGradient>
                     </TouchableOpacity>
-                    <View>
-                        <Link href={"/register"} >cadastre-se</Link>
+                    <View style={styles.semconta}>
+                        <Text>Don't have an account? </Text><Link href={"/register"} >Sign up</Link>
                     </View>
                 </View>
             </SafeAreaView>
@@ -65,14 +75,18 @@ export default function Login(){
 
 const styles = StyleSheet.create({
     divizona: {
-        // flex: 1,
         height: "100%"
     },
     div_principal: {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-around",
-        height: "70%"
+        height: "60%"
+    },
+    semconta: {
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "row"
     },
     esqueceu: {
         width: "70%",
