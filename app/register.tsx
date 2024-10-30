@@ -38,7 +38,7 @@ export default function Register() {
         <>
             <SafeAreaView style={styles.divizona}>
                 <LinearGradient style={styles.div} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
-                    <Image style={styles.logo} source="../assets/images/m.png" />
+                    <Image style={styles.logo} source="../assets/images/logo.png" />
                     <View style={styles.textinho}>
                         <Text style={styles.texto_login}>Register</Text>
                     </View>

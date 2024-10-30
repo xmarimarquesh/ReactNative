@@ -1,80 +1,78 @@
 import { useState } from "react";
-import { View, Text, SafeAreaView, TextInput, StyleSheet, TouchableOpacity} from "react-native";
+import { View, Text, SafeAreaView, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { Link, router } from "expo-router";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { FIREBASE_AUTH } from "@/firebaseConfig";
 
-export default function Login(){
+export default function Login() {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-
-    // const [count, setCount] = useState(0);
-    // const onPress = () => setCount(prevCount => prevCount + 1);
+    const [isEmailFocused, setEmailFocused] = useState(false);
+    const [isPassFocused, setPassFocused] = useState(false);
 
     const auth = FIREBASE_AUTH;
 
     const signIn = () => {
         signInWithEmailAndPassword(auth, email, pass)
-        .then((dadosUsuario) => {
-            console.log(dadosUsuario);
-            router.push('/(tabs)')
-        }).catch((err) => {
-            alert(err.message);
-        })
-    }
+            .then((dadosUsuario) => {
+                console.log(dadosUsuario);
+                router.push('/(tabs)');
+            }).catch((err) => {
+                alert(err.message);
+            });
+    };
 
-    console.log(email, pass)
-    console.log(typeof email, typeof pass);
-
-    return(
-        <>
-            <SafeAreaView style={styles.divizona}>
-                <LinearGradient style={styles.div} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
-                    <Image style={styles.logo} source="../assets/images/m.png"></Image>
-                    <View style={styles.textinho}>
-                        <Text style={styles.texto_login}>Login</Text>
-                    </View>
-                </LinearGradient>
-                <View style={styles.div_principal}>
-                    <View style={styles.inputs}>
-                        <TextInput
-                            style={styles.input}
-                            onChangeText={setEmail}
-                            value={email}
-                            placeholder="E-mail"
-                            keyboardType="email-address"
-                            />
-                        <TextInput
-                            style={styles.input}
-                            onChangeText={setPass}
-                            value={pass}
-                            placeholder="Password"
-                            keyboardType="numeric"
-                            secureTextEntry={true}
-                        />
-                        <View style={styles.esqueceu}>
-                            <Text>Forgot your password?</Text>
-                        </View>
-                    </View>
-                    {/* <Text>Count: {count}</Text> */}
-                    <TouchableOpacity style={styles.buttonn} onPress={signIn}>
-                        <LinearGradient style={styles.button} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
-                            <Text style={styles.button_text}>Submit</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                    <View style={styles.semconta}>
-                        <Text>Don't have an account? </Text><Link href={"/register"} >Sign up</Link>
+    return (
+        <SafeAreaView style={styles.divzona}>
+            <LinearGradient style={styles.div} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
+                <Image style={styles.logo} source={require('../assets/images/logo.png')} />
+                <View style={styles.textinho}>
+                    <Text style={styles.texto_login}>Login</Text>
+                </View>
+            </LinearGradient>
+            <View style={styles.div_principal}>
+                <View style={styles.inputs}>
+                    <TextInput
+                        style={[styles.input, isEmailFocused && styles.inputFocused]}
+                        onChangeText={setEmail}
+                        value={email}
+                        placeholder="E-mail"
+                        keyboardType="email-address"
+                        onFocus={() => setEmailFocused(true)}
+                        onBlur={() => setEmailFocused(false)}
+                    />
+                    <TextInput
+                        style={[styles.input, isPassFocused && styles.inputFocused]}
+                        onChangeText={setPass}
+                        value={pass}
+                        placeholder="Password"
+                        keyboardType="default"
+                        secureTextEntry={true}
+                        onFocus={() => setPassFocused(true)}
+                        onBlur={() => setPassFocused(false)}
+                    />
+                    <View style={styles.esqueceu}>
+                        <Text>Forgot your password?</Text>
                     </View>
                 </View>
-            </SafeAreaView>
-        </>
-    )
+                <TouchableOpacity style={styles.buttonn} onPress={signIn}>
+                    <LinearGradient style={styles.button} colors={["#1C0036FF", "#120022FF", "#000000FF"]}>
+                        <Text style={styles.button_text}>Submit</Text>
+                    </LinearGradient>
+                </TouchableOpacity>
+                <View style={styles.semconta}>
+                    <Text>Don't have an account? </Text>
+                    <Link href="/register">Sign up</Link>
+                </View>
+            </View>
+        </SafeAreaView>
+    );
 }
 
 const styles = StyleSheet.create({
-    divizona: {
+    divzona: {
         height: "100%"
     },
     div_principal: {
@@ -88,6 +86,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: "row"
     },
+    inputFocused: {
+        borderColor: '#ffffff',
+        borderWidth: 2,
+    },
     esqueceu: {
         width: "70%",
         display: 'flex',
@@ -100,7 +102,8 @@ const styles = StyleSheet.create({
     input: {
         height: 40,
         margin: 12,
-        borderWidth: 0,
+        borderColor: 'transparent', // Inicialmente sem borda
+        borderWidth: 2, // Para garantir que a borda seja visível ao focar
         padding: 10,
         borderRadius: 20,
         shadowColor: "#000",
@@ -112,7 +115,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2.62,
         elevation: 4,
     },
-    buttonn:{
+    buttonn: {
         padding: 10,
         margin: 12,
         width: "70%",
@@ -152,4 +155,4 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         padding: 20,
     }
-  });
+});

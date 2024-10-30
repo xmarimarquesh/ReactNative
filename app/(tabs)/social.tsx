@@ -1,17 +1,11 @@
 import { FlatList, SafeAreaView, StatusBar, Text, View, StyleSheet } from "react-native";
-import data from "@/constants/data.json";
-import { Item } from "@/components/item";
   
-export default function List(){
+export default function Social(){
     return(
         <>
-        <Text style={styles.titulo}> Lista </Text>
+        <Text style={styles.titulo}> Roupas Sociais </Text>
         <SafeAreaView style={styles.container}>
-            <FlatList
-                data={data}
-                renderItem={({item}) => <Item name={item.nome} age={item.idade} date={item.data} image={item.imagem} />}
-                keyExtractor={item => item.id}
-            />
+            <Text>Social</Text>
         </SafeAreaView>
         </>
     )
