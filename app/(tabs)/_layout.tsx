@@ -13,7 +13,7 @@ export default function TabLayout() {
         <Tabs.Screen name='casual' options={{tabBarLabel: "Casual", tabBarLabelStyle: styles.label, headerShown: false, tabBarIcon: () => (<Text style={styles.icon}>👗</Text>)}}></Tabs.Screen>
         <Tabs.Screen name='social' options={{tabBarLabel: "Social", tabBarLabelStyle: styles.label, headerShown: false, tabBarIcon: () => (<Text style={styles.icon}>🧥</Text>)}}></Tabs.Screen>
         <Tabs.Screen name='esportiva' options={{tabBarLabel: "Esportiva", tabBarLabelStyle: styles.label, headerShown: false, tabBarIcon: () => (<Text style={styles.icon}>🧤</Text>)}}></Tabs.Screen>
-        <Tabs.Screen name='banho' options={{tabBarLabel: "Banho", tabBarLabelStyle: styles.label, headerShown: false, tabBarIcon: () => (<Text style={styles.icon}>🩳</Text>)}}></Tabs.Screen>
+        <Tabs.Screen name='banho' options={{tabBarLabel: "Banho", tabBarLabelStyle: styles.label, headerShown: false, tabBarIcon: () => (<Text style={styles.icon}>🩱</Text>)}}></Tabs.Screen>
       </Tabs>
     </>
   );
